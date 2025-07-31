@@ -4,10 +4,14 @@ This document provides information on how to use the hacker style features imple
 
 ## Features
 
-The hacker style implementation includes two main features:
+The hacker style implementation includes the following features:
 
-1. A crosshair cursor that follows the mouse
-2. Popup functionality that can be triggered from markdown files
+1. JetBrains Mono font (Nerd Font) for all text
+2. IntelliJ IDEA dark theme color scheme
+3. A crosshair cursor that follows the mouse
+4. Custom text selection color matching the theme
+5. Popup functionality that can be triggered from markdown files
+6. Styled content blocks with borders similar to popups
 
 ## Crosshair Cursor
 
@@ -75,6 +79,46 @@ Click the button below to learn more:
 2. If you need to include HTML in your content, it will be rendered properly.
 3. Each popup must have a unique ID to function correctly.
 4. The popup content is limited to text and basic HTML. For complex content, consider creating a custom include.
+
+## JetBrains Mono Font
+
+The site uses JetBrains Mono, a free and open-source typeface designed for developers by JetBrains. This monospaced font features clear distinctions between similar characters and increased letter height for better readability.
+
+The font is loaded from Google Fonts and applied to all text elements on the site.
+
+## IntelliJ IDEA Dark Theme
+
+The site uses a color scheme inspired by IntelliJ IDEA's dark theme, featuring:
+
+- Dark backgrounds (`#2b2b2b`, `#1e1e1e`)
+- Light text (`#a9b7c6`)
+- Blue accent color (`#4e94ce`)
+- Subtle borders and highlights
+
+The theme is applied to all elements including:
+- Page backgrounds and text
+- Buttons and interactive elements
+- Code blocks and syntax highlighting
+- The crosshair cursor
+- Text selection
+
+## Text Selection Styling
+
+The site features custom text selection styling that matches the theme:
+
+- Selected text has a blue background color matching the crosshair (`#4e94ce`)
+- Text color changes to white for better contrast when selected
+- The selection has a slight transparency (opacity: 0.7) to maintain visual harmony with the crosshair
+
+This consistent styling helps maintain the cohesive look and feel of the hacker theme throughout the user experience.
+
+## Styled Content Blocks
+
+All content blocks (articles with class="post") feature:
+- Dark background with subtle borders
+- Blue accent border at the top
+- Styled headers and content sections
+- Enhanced code block styling
 
 ## Customization
 

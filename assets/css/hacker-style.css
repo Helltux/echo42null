@@ -1,23 +1,57 @@
 /* Hacker Style CSS */
 
+/* JetBrains Mono Font */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+/* Base Font Settings */
+body, button, input, select, textarea {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* IntelliJ Dark Theme Colors */
+:root {
+    --intellij-bg: #2b2b2b;
+    --intellij-darker-bg: #1e1e1e;
+    --intellij-lighter-bg: #3c3f41;
+    --intellij-text: #a9b7c6;
+    --intellij-accent: #4e94ce;
+    --intellij-selection: #214283;
+    --intellij-highlight: #323232;
+    --intellij-border: #555555;
+}
+
+/* Apply Dark Theme */
+body {
+    background-color: var(--intellij-bg);
+    color: var(--intellij-text);
+}
+
+a {
+    color: var(--intellij-accent);
+}
+
+a:hover {
+    color: #6ba8e5;
+}
+
 /* Popup Trigger Button */
 .popup-trigger {
-    background-color: #000;
-    color: #f00;
-    border: 2px solid #f00;
+    background-color: var(--intellij-lighter-bg);
+    color: var(--intellij-text);
+    border: 1px solid var(--intellij-border);
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
     margin: 20px 0;
-    font-family: monospace;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 1px;
     transition: all 0.3s ease;
+    border-radius: 3px;
 }
 
 .popup-trigger:hover {
-    background-color: #f00;
-    color: #000;
+    background-color: var(--intellij-selection);
+    color: #ffffff;
 }
 
 /* Custom Cursor */
@@ -40,19 +74,20 @@
 .cursor::after {
     content: '';
     position: absolute;
-    background-color: red;
+    background-color: var(--intellij-accent);
+    opacity: 0.7;
 }
 
 .cursor::before {
     top: calc(50% - 1px);
     width: 200vw;
-    height: 2px;
+    height: 1px;
     left: -50vw;
 }
 
 .cursor::after {
     left: calc(50% - 1px);
-    width: 2px;
+    width: 1px;
     height: 200vh;
     top: -50vh;
 }
@@ -81,33 +116,105 @@
 }
 
 .popup-container > .border-bottom {
-    border-bottom: 1px solid #f00;
+    border-bottom: 1px solid var(--intellij-border);
 }
 
 .popup-container > .border-content-bottom {
-    border-bottom: 3px solid #f00;
+    border-bottom: 2px solid var(--intellij-accent);
 }
 
 .popup-container > .border-left {
-    border-left: 1px solid #f00;
+    border-left: 1px solid var(--intellij-border);
 }
 
 .popup-container > .border-content-left {
-    border-left: 3px solid #f00;
+    border-left: 2px solid var(--intellij-accent);
 }
 
 .popup-container > .border-right {
-    border-right: 1px solid #f00;
+    border-right: 1px solid var(--intellij-border);
 }
 
 .popup-container > .border-content-right {
-    border-right: 3px solid #f00;
+    border-right: 2px solid var(--intellij-accent);
 }
 
 .popup-container > .border-top {
-    border-top: 1px solid #f00;
+    border-top: 1px solid var(--intellij-border);
 }
 
 .popup-container > .border-content-top {
-    border-top: 3px solid #f00;
+    border-top: 2px solid var(--intellij-accent);
+}
+
+/* Article Post Styling */
+article.post {
+    background-color: var(--intellij-darker-bg);
+    border: 1px solid var(--intellij-border);
+    border-radius: 3px;
+    padding: 20px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+article.post::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--intellij-accent);
+}
+
+/* Post Header Styling */
+.post-header {
+    border-bottom: 1px solid var(--intellij-border);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.post-title {
+    color: var(--intellij-text);
+    font-weight: bold;
+}
+
+/* Text Selection Styling */
+::selection {
+    background-color: var(--intellij-accent);
+    color: #ffffff;
+    opacity: 0.7;
+}
+
+::-moz-selection {
+    background-color: var(--intellij-accent);
+    color: #ffffff;
+    opacity: 0.7;
+}
+
+/* Post Content Styling */
+.post-content {
+    line-height: 1.6;
+}
+
+.post-content h2, 
+.post-content h3, 
+.post-content h4 {
+    color: var(--intellij-accent);
+    margin-top: 25px;
+}
+
+.post-content code {
+    background-color: var(--intellij-highlight);
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.post-content pre {
+    background-color: var(--intellij-highlight);
+    padding: 15px;
+    border-radius: 3px;
+    overflow-x: auto;
+    border-left: 3px solid var(--intellij-accent);
 }
