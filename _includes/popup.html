@@ -24,9 +24,19 @@ document.addEventListener('DOMContentLoaded', function() {
       trigger.addEventListener('click', () => {
         // Set popup content
         popupContent.innerHTML = `
+          <button class="popup-close-button" title="Close">&times;</button>
           <h2>{{ include.title }}</h2>
-          <div>{{ include.content }}</div>
+          <div class="popup-content-body">{{ include.content }}</div>
         `;
+        
+        // Add event listener to the newly created close button
+        const closeButton = popupContent.querySelector('.popup-close-button');
+        if (closeButton) {
+          closeButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            popupContainer.style.display = 'none';
+          });
+        }
         
         // Show popup
         popupContainer.style.display = 'grid';

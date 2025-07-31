@@ -35,7 +35,7 @@ title: Your Page Title
 
 ## Popup Functionality
 
-The hacker style includes a popup system that can be triggered from any markdown file. This allows you to create interactive content without writing custom HTML or JavaScript.
+The hacker style includes a popup system that can be triggered from any markdown file. This allows you to create interactive content without writing custom HTML or JavaScript. The popups feature a resizable interface with improved readability and can be customized to fit your content needs.
 
 ### Using Popups in Markdown
 
@@ -81,6 +81,35 @@ Click the button below to learn more:
 3. Each popup must have a unique ID to function correctly.
 4. The popup content is limited to text and basic HTML. For complex content, consider creating a custom include.
 
+### Resizable Popup Features
+
+The popup interface includes advanced resizing capabilities:
+
+1. **Resize Handles**: The popup is surrounded by numbered divs (1-9) that act as resize handles:
+   - Top edge (div 2): Resize vertically from the top
+   - Bottom edge (div 8): Resize vertically from the bottom
+   - Left edge (div 4): Resize horizontally from the left
+   - Right edge (div 6): Resize horizontally from the right
+   - Corner divs (1, 3, 7, 9): Resize diagonally
+
+2. **How to Resize**:
+   - Hover over any of the numbered border divs to see the resize cursor
+   - Click and drag to resize the popup in the corresponding direction
+   - The popup maintains a minimum size (200px width, 100px height) to ensure content remains readable
+   - Resizing operations will not cause the popup to close
+
+3. **Dragging**: You can click and drag the popup header (title area) to move the entire popup around the screen.
+
+4. **Closing the Popup**: 
+   - Each popup has a dedicated close button (×) in the top-right corner
+   - Press the Escape key to close any open popup
+   - Click outside the popup area to close it
+
+5. **Content Sizing**:
+   - The popup has a minimum height of 300px and minimum width of 400px
+   - Content that exceeds the popup dimensions will be scrollable
+   - The popup has a maximum height of 80% of the viewport height
+
 ## JetBrains Mono Font
 
 The site uses JetBrains Mono, a free and open-source typeface designed for developers by JetBrains. This monospaced font features clear distinctions between similar characters and increased letter height for better readability.
@@ -122,7 +151,7 @@ To modify the glitch effect:
 
 1. Edit the text in `_includes/glitch-title.html` by changing both the text content and the `data-text` attribute
 2. Adjust the colors in the CSS by modifying the `text-shadow` properties in the `.glitch:before` and `.glitch:after` selectors
-3. Change the animation timing by modifying the animation duration values in the CSS
+3. Change the animation timing by modifying the animation duration values in the CSS (currently set to 5s and 7.5s for a slower, more subtle effect)
 
 ## Text Selection Styling
 
@@ -133,6 +162,16 @@ The site features custom text selection styling that matches the theme:
 - The selection has a slight transparency (opacity: 0.7) to maintain visual harmony with the crosshair
 
 This consistent styling helps maintain the cohesive look and feel of the hacker theme throughout the user experience.
+
+## Link Hover Styling
+
+Links have a special hover effect that matches the text selection styling:
+
+- When hovering over a link, the background changes to the accent color (`#4e94ce`)
+- Text color changes to white for better contrast
+- The hover effect has a slight transparency (opacity: 0.7)
+- The underline is removed and replaced with padding and rounded corners
+- This creates a cohesive experience where links and selections share a similar visual language
 
 ## Styled Content Blocks
 
@@ -147,9 +186,18 @@ All content blocks (articles with class="post") feature:
 The hacker style can be customized by modifying the following files:
 
 - `assets/css/hacker-style.css`: Contains all the CSS for the hacker style
-- `assets/js/hacker-script.js`: Contains the JavaScript for the cursor and popup functionality
-- `_includes/hacker-elements.html`: Contains the HTML elements for the cursor and popup container
+- `assets/js/hacker-script.js`: Contains the JavaScript for the cursor and popup functionality, including resize and drag features
+- `_includes/hacker-elements.html`: Contains the HTML elements for the cursor and popup container with numbered divs for resizing
 - `_includes/popup.html`: Contains the implementation of the popup include
+
+### Customizing Popup Behavior
+
+To customize the popup resize behavior:
+
+1. **Minimum Dimensions**: In `assets/js/hacker-script.js`, you can modify the minimum width (200px) and height (100px) values in the resize handlers.
+2. **Initial Size**: The default width is set to 500px in the HTML. You can change this in `_includes/hacker-elements.html`.
+3. **Background Opacity**: The popup content background opacity (95%) can be adjusted in the CSS file.
+4. **Resize Handles**: The numbered divs (1-9) that act as resize handles can be styled differently by modifying their CSS classes.
 
 ## Troubleshooting
 
