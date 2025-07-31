@@ -10,8 +10,9 @@ The hacker style implementation includes the following features:
 2. IntelliJ IDEA dark theme color scheme
 3. A crosshair cursor that follows the mouse
 4. Custom text selection color matching the theme
-5. Popup functionality that can be triggered from markdown files
-6. Styled content blocks with borders similar to popups
+5. Glitch effect for the site title
+6. Popup functionality that can be triggered from markdown files
+7. Styled content blocks with borders similar to popups
 
 ## Crosshair Cursor
 
@@ -101,6 +102,27 @@ The theme is applied to all elements including:
 - Code blocks and syntax highlighting
 - The crosshair cursor
 - Text selection
+
+## Glitch Effect for Site Title
+
+The site features a glitch effect for the main title "echo42null" in the header:
+
+- The title text appears to "glitch" with red and blue shadow effects
+- The effect uses CSS animations with clip paths to create the glitchy appearance
+- The glitch is created using pseudo-elements (::before and ::after) with different animations
+- The Varela font is used specifically for the glitch effect
+
+The glitch effect is implemented in:
+- `_includes/glitch-title.html`: Contains the HTML structure for the glitched title
+- `assets/css/hacker-style.css`: Contains the CSS animations and styling for the glitch effect
+
+### Customizing the Glitch Effect
+
+To modify the glitch effect:
+
+1. Edit the text in `_includes/glitch-title.html` by changing both the text content and the `data-text` attribute
+2. Adjust the colors in the CSS by modifying the `text-shadow` properties in the `.glitch:before` and `.glitch:after` selectors
+3. Change the animation timing by modifying the animation duration values in the CSS
 
 ## Text Selection Styling
 

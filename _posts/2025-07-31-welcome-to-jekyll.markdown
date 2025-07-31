@@ -12,6 +12,13 @@ Jekyll requires blog post files to be named according to the following format:
 
 Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
 
+{% include popup.html
+id='demo-popup'
+trigger_text='Click to open a demo popup'
+title='Demo Popup'
+content='This popup was created directly from markdown content using the popup include. <br><br>You can add <strong>formatted text</strong> and other HTML elements here.'
+%}
+
 Jekyll also offers powerful support for code snippets:
 
 {% highlight ruby %}
