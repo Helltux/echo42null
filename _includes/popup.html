@@ -1,0 +1,37 @@
+{% comment %}
+  Popup include for markdown files
+  
+  Usage in markdown:
+  {% include popup.html 
+     id='unique-popup-id'
+     trigger_text='Click to open popup'
+     title='Popup Title'
+     content='Popup content goes here. Can include <strong>HTML</strong>.'
+  %}
+{% endcomment %}
+
+<button class="popup-trigger" data-popup-id="{{ include.id }}">{{ include.trigger_text }}</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Create popup content for this specific popup
+  const popupContainer = document.getElementById('popup-container');
+  if (popupContainer) {
+    const popupContent = popupContainer.querySelector('#popup-content');
+    const triggers = document.querySelectorAll('[data-popup-id="{{ include.id }}"]');
+    
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        // Set popup content
+        popupContent.innerHTML = `
+          <h2>{{ include.title }}</h2>
+          <div>{{ include.content }}</div>
+        `;
+        
+        // Show popup
+        popupContainer.style.display = 'grid';
+      });
+    });
+  }
+});
+</script>

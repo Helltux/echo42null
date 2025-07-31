@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: hacker-page
 title:  "Welcome to Jekyll!"
 date:   2025-07-31 12:50:46 +0200
 categories: jekyll update

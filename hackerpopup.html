@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Popup-Beispiel</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" media="all" href="http_www.medion.com_wro_medion_responsive_8-6-0v1.css"/>
+    <style>
+
+        .popup-container {
+            position: fixed;
+            display: grid;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            grid-template-columns: 1fr auto 1fr;
+            grid-template-rows: 1fr auto 1fr;
+            box-sizing: border-box;
+        }
+
+
+        .popup-container > div {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .popup-container > .border-bottom {
+            border-bottom: 1px solid #f00;
+        }
+
+        .popup-container > .border-content-bottom {
+            border-bottom: 3px solid #f00;
+        }
+
+        .popup-container > .border-left {
+            border-left: 1px solid #f00;
+        }
+
+        .popup-container > .border-content-left {
+            border-left: 3px solid #f00;
+        }
+
+        .popup-container > .border-rigth {
+            border-right: 1px solid #f00;
+        }
+
+        .popup-container > .border-content-right {
+            border-right: 3px solid #f00;
+        }
+
+        .popup-container > .border-top {
+            border-top: 1px solid #f00;
+        }
+
+        .popup-container > .border-content-top {
+            border-top: 3px solid #f00;
+        }
+
+    </style>
+
+    <style>
+        * {
+            cursor: none;
+        }
+
+        .cursor {
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            width: 300vw;
+            height: 300vh;
+        }
+
+        .cursor::before,
+        .cursor::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: red;
+        }
+
+        .cursor::before {
+            top: calc(50% - 1px);
+        }
+
+        .cursor::after {
+            left: calc(50% - 1px);
+            width: 2px;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<button id="popup-btn">Popup öffnen</button>
+
+<div class="container">
+    <h1>Hacker Movie</h1>
+    <p><em>Hacker Movie</em> ist ein Film aus dem Jahr 20xx, der sich mit der Welt der Hacker beschäftigt. Der Film zeigt das Leben eines jungen Hackers, der sich auf eine gefährliche Mission begibt, um die Regierung zu entlarven.</p>
+    <img src="https://example.com/hacker-movie-poster.jpg" alt="Hacker Movie Poster">
+    <h2>Handlung</h2>
+    <p>Die Handlung von <em>Hacker Movie</em> dreht sich um den jungen Hacker Alex, der sich in die Regierungsdatenbank hackt, um Beweise für die Korruption der Regierung zu finden. Als Alex von den Behörden entdeckt wird, muss er fliehen und sich auf eine gefährliche Mission begeben, um seine Unschuld zu beweisen und die Wahrheit ans Licht zu bringen.</p>
+    <h2>Cast</h2>
+    <ul>
+        <li>John Doe als Alex</li>
+        <li>Jane Smith als Kate</li>
+        <li>Bob Johnson als Agent Smith</li>
+        <li>...</li>
+    </ul>
+    <h2>Rezeption</h2>
+    <blockquote>"<em>Hacker Movie</em> ist ein packender Thriller, der die Welt der Hacker auf eine spannende und realistische Weise zeigt."</blockquote>
+    <p><em>Hacker Movie</em> erhielt positive Kritiken von Kritikern und Zuschauern gleichermaßen und war ein großer Erfolg an der Kinokasse.</p>
+</div>
+
+<div id="popup-container" class="popup-container" style="display: grid">
+    <div id="borderBlock1" class="border-bottom border-rigth">1</div>
+    <div id="borderBlock2" class="border-content-bottom">2</div>
+    <div id="borderBlock3" class="border-bottom border-left">3</div>
+
+    <div class="border-content-right">4</div>
+
+    <div id="conent" class="conent" style="width: 500px">
+
+        <div id="cboxContent">
+            <div id="cboxLoadedContent">
+                <div id="addToCartLayer" class="colorbox__content">
+                    <h2 id="addToCartTitleSuccess" class="util-h-xxl util-icon--before util-icon--check util-success">Der Artikel wurde Ihrem Warenkorb hinzugefügt</h2>
+                    <h2 id="addToCartTitleError" class="util-h-xxl util-icon--before util-icon--check util-icon--close display-none">Beim Hinzufügen zum Warenkorb ist ein Fehler aufgetreten</h2>
+                    <div class="cart-item cart-item--layer">
+                        <div class="cart-item__info">
+                            <div class="row util-reset-margin-bottom">
+                                <div class="col-xs-3">
+                                    <a href="/de/shop/p/saugroboter-medion-saugroboter-mit-absaugstation-x20-sw--wischfunktion-lasernavigation-3-000-pa-saugkraft-no-go--go-bereiche-praezise-kartenerstellung-mehrere-etagen-app-steuerung-50072320A1"><img src="https://media.medion.com/prod/medion/de_DE/0772/0743/0746/72860_MD11415_X20SW_alexa_3000x3000_DE.png?w=600" width="600" alt="MEDION® Saugroboter mit Absaugstation X20 SW+, Wischfunktion, Lasernavigation, 3.000 Pa Saugkraft, No Go &amp; Go Bereiche, präzise Kartenerstellung, mehrere Etagen, App-Steuerung" title="MEDION® Saugroboter mit Absaugstation X20 SW+, Wischfunktion, Lasernavigation, 3.000 Pa Saugkraft, No Go &amp; Go Bereiche, präzise Kartenerstellung, mehrere Etagen, App-Steuerung" class="img-fluid">
+                                    </a>
+                                </div>
+                                <div class="col-xs-9">
+                                    <div class="cart-item__name"><a class="name" id="cartPopupItemName" href="/de/shop/p/saugroboter-medion-saugroboter-mit-absaugstation-x20-sw--wischfunktion-lasernavigation-3-000-pa-saugkraft-no-go--go-bereiche-praezise-kartenerstellung-mehrere-etagen-app-steuerung-50072320A1" data-click-name="add_to_cart_popup_50072320A1">MEDION® Saugroboter mit Absaugstation X20 SW+, Wischfunktion, Lasernavigation, 3.000 Pa Saugkraft, No Go &amp; Go Bereiche, präzise Kartenerstellung, mehrere Etagen, App-Steuerung</a></div>
+                                    <div class="cart-item__code">
+                                        <small id="cartPopupItemCode">Artikel-Nr.&nbsp;50072320A1</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item__price">
+                            <div class="price-box">
+			<span class="current-price" id="cartPopupItemCurrentPrice"><span>299,95</span>&nbsp;<span>€</span>
+                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-group util-reset-margin-bottom">
+                        <button id="cartPopupContinueShoppingButton" class="btn btn--ci util-left util-icon--before util-icon--arrow-button-left util-reset-margin-bottom js-add-to-cart-close-button">
+                            Weiter einkaufen
+                        </button>
+                        <a href="/de/shop/cart" id="cartPopupToCart" class="btn util-right util-icon--after util-icon--arrow-button-right util-reset-margin-bottom">
+                            Zum Warenkorb</a>
+                    </div>
+                    <div class="product-slider-wrapper">
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="border-content-left">6</div>
+
+    <div class="border-rigth border-top">7</div>
+    <div class="border border-content-top">8</div>
+    <div class="border-left border-top">9</div>
+</div>
+
+<div class="cursor">
+    <div class="cursor-line cursor-line-horizontal"></div>
+    <div class="cursor-line cursor-line-vertical"></div>
+</div>
+
+<script>
+    const popupBtn = document.getElementById( 'popup-btn' );
+    const popupContainer = document.getElementById( 'popup-container' );
+    const content = document.querySelector( '.conent' );
+
+    popupBtn.addEventListener( 'click', () => {
+        popupContainer.style.display = 'grid';
+    } );
+
+    popupContainer.addEventListener( 'click', ( event ) => {
+        console.log( event );
+        if ( event.target !== content && !content.contains( event.target ) ) {
+            popupContainer.style.display = 'none';
+        } else {
+            console.log( "mike2" )
+        }
+    } );
+
+    document.addEventListener( 'DOMContentLoaded', function () {
+    } );
+</script>
+<script>
+    const cursor = document.querySelector( '.cursor' );
+
+    document.addEventListener( 'mousemove', e => {
+        const cursorWidth = cursor.offsetWidth;
+        const cursorHeight = cursor.offsetHeight;
+
+        cursor.style.top = ( e.clientY - cursorHeight / 2 ) + 'px';
+        cursor.style.left = ( e.clientX - cursorWidth / 2 ) + 'px';
+
+    } );
+</script>
+
+<script>
+    const myObject = document.getElementById( 'conent' );
+
+    myObject.addEventListener( 'mousedown', e => {
+        console.log( 'Maus geklickt.' );
+
+        myObject.addEventListener( 'mousemove', moveCallback );
+    } );
+
+    function moveCallback( e ) {
+        console.log( 'Mausbewegung', e.clientX, e.clientY );
+    }
+
+    myObject.addEventListener( 'mouseup', e => {
+        console.log( 'Maus losgelassen.' );
+
+        myObject.removeEventListener( 'mousemove', moveCallback );
+    } );
+</script>
+
+</body>
+</html>
+
