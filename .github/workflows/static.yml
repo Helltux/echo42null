@@ -1,0 +1,51 @@
+# Simple workflow for deploying static content from "blog/" to GitHub Pages
+name: Deploy static blog to Pages
+
+on:
+  # Runs on pushes to the main branch
+  push:
+    branches: ["main"]
+
+  # Allows manual trigger
+  workflow_dispatch:
+
+# Permissions for Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Ensure only one deployment at a time
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Optional: Clean up any unneeded files (keeps artifact small)
+      # - name: Remove other files
+      #   run: rm -rf !(blog)
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # Upload only your blog folder as artifact
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # This is the folder where your ready-to-serve HTML files are
+          path: '/'
+
+      # Deploy to gh-pages branch
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
