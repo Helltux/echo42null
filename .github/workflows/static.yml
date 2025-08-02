@@ -43,7 +43,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # This is the folder where your ready-to-serve HTML files are
-          path: '/_site'
+          path: '_site'
 
       # Deploy to gh-pages branch
       - name: Deploy to GitHub Pages
