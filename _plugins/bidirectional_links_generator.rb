@@ -4,7 +4,7 @@ class BidirectionalLinksGenerator < Jekyll::Generator
     graph_nodes = []
     graph_edges = []
 
-    all_notes = site.collections['posts'].docs
+    all_notes = site.collections.values.flat_map(&:docs)
     all_pages = site.pages
 
     all_docs = all_notes + all_pages

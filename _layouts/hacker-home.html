@@ -6,7 +6,21 @@ layout: hacker-default
   <!--  <h1 class="page-heading">{{ page.title | escape }}</h1>-->
   
   <!--  {{ content }}-->
-  
+    <h2 class="post-list-heading">Content</h2>
+    <ul class="post-list">
+      {% for contentElement in site.content %}
+      <li>
+        <span class="post-meta">{{ contentElement.date | date: "%b %-d, %Y" }}</span>
+        <h3>
+          <a class="post-link" href="{{ contentElement.url | relative_url }}">
+            {{ contentElement.title | escape }}
+          </a>
+        </h3>
+      </li>
+      {% endfor %}
+    </ul>
+
+
     <h2 class="post-list-heading">Posts</h2>
     <ul class="post-list">
       {% for post in site.posts %}
