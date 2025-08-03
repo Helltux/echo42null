@@ -15,6 +15,10 @@ Jekyll::Hooks.register [:pages], :post_convert do |doc|
   convert_links(doc)
 end
 
+Jekyll::Hooks.register [:content], :post_convert do |doc|
+  convert_links(doc)
+end
+
 def convert_links(doc)
   open_external_links_in_new_tab = !!doc.site.config["open_external_links_in_new_tab"]
 

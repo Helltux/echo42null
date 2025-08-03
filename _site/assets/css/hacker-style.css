@@ -366,3 +366,33 @@ a.site-title:hover {
     overflow-x: auto;
     border-left: 3px solid var(--intellij-accent);
 }
+
+/* Table Styling for Dark Mode */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid var(--intellij-border);
+    color: var(--intellij-text);
+}
+
+table th {
+    background-color: var(--intellij-lighter-bg);
+    border: 1px solid var(--intellij-border);
+    padding: 8px;
+    text-align: left;
+}
+
+table td {
+    border: 1px solid var(--intellij-border);
+    padding: 8px;
+}
+
+table tr:nth-child(even) {
+    background-color: rgb(247.3, 247.3, 247.3);
+}
+
+/* Override for dark mode */
+table tr:nth-child(even) {
+    background-color: var(--intellij-highlight);
+}
