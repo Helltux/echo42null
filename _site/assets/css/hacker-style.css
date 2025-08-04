@@ -244,7 +244,7 @@ article.post::before {
 /* Glitch Effect */
 .glitch {
     color: var(--intellij-text);
-    font-family: 'Varela', sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 24px;
     position: relative;
     margin: 0;
