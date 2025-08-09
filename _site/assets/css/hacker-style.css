@@ -1,5 +1,39 @@
 /* Hacker Style CSS */
 
+/* ScrambleText Effect */
+.scramble-text {
+    display: inline-block;
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+}
+
+.scramble-text__char {
+    display: inline-block;
+    /* subtle motion jitter while scrambling */
+    transition: transform 120ms ease, opacity 120ms ease;
+}
+
+/* optional subtle hover vibe */
+.scramble-text:hover .scramble-text__char {
+    will-change: transform;
+}
+
+.scramble-text__char:nth-child(odd) { opacity: 0.96; }
+.scramble-text__char:nth-child(3n) { opacity: 0.94; }
+
+/* tiny random-looking nudge */
+.scramble-text:hover .scramble-text__char:nth-child(3n) {
+    transform: translateY(0.5px);
+}
+
+.scramble-text:hover .scramble-text__char:nth-child(3n+1) {
+    transform: translateY(-0.5px);
+}
+
+.scramble-text:hover .scramble-text__char:nth-child(3n+2) {
+    transform: translateY(0);
+}
+
 /* JetBrains Mono Font */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 

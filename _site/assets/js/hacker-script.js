@@ -1,5 +1,176 @@
 // Hacker Style JavaScript
 
+// ScrambleText functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const DEFAULT_CHARS = "!<>-_\\/[]{}—=+*^?";
+    const STEP_MS = 30;
+    const SCRAMBLE_RANGE = 3; // Number of characters to scramble on each side of the cursor
+    const SCRAMBLE_DURATION_MS = 1500; // Duration in ms before scramble effect stops
+    
+    // Find all scramble-text elements
+    const scrambleElements = document.querySelectorAll('.scramble-text');
+    
+    scrambleElements.forEach(element => {
+        // Store original text
+        const originalChars = [];
+        const charElements = element.querySelectorAll('.scramble-text__char');
+        
+        charElements.forEach(charEl => {
+            originalChars.push(charEl.innerHTML);
+        });
+        
+        let isHovering = false;
+        let animationFrameId = null;
+        let timeoutId = 1.8;
+        let currentMouseX = 0;
+        
+        // Get a random character from the set
+        function getRandomChar() {
+            return DEFAULT_CHARS[Math.floor(Math.random() * DEFAULT_CHARS.length)];
+        }
+        
+        // Get the character index closest to the mouse position
+        function getCharIndexAtPosition(mouseX) {
+            const elementRect = element.getBoundingClientRect();
+            const relativeX = mouseX - elementRect.left;
+            
+            // Find the character element closest to the mouse position
+            let closestIndex = 0;
+            let closestDistance = Infinity;
+            
+            charElements.forEach((charEl, index) => {
+                const charRect = charEl.getBoundingClientRect();
+                const charCenter = charRect.left + charRect.width / 2 - elementRect.left;
+                const distance = Math.abs(relativeX - charCenter);
+                
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestIndex = index;
+                }
+            });
+            
+            return closestIndex;
+        }
+        
+        // Main animation function
+        function runScramble() {
+            const startTime = performance.now();
+            let isScrambling = true;
+            
+            function tick(timestamp) {
+                // Check if we've exceeded the scramble duration
+                const elapsed = timestamp - startTime;
+                if (elapsed > SCRAMBLE_DURATION_MS) {
+                    isScrambling = false;
+                }
+                
+                // Get the current center index based on mouse position
+                const centerIndex = getCharIndexAtPosition(currentMouseX);
+                const startIndex = Math.max(0, centerIndex - SCRAMBLE_RANGE);
+                const endIndex = Math.min(originalChars.length - 1, centerIndex + SCRAMBLE_RANGE);
+                
+                // Reset all characters to original first
+                charElements.forEach((charEl, i) => {
+                    charEl.innerHTML = originalChars[i];
+                });
+                
+                // Only scramble if we're still within the duration
+                if (isScrambling) {
+                    // Scramble only characters within range of the mouse
+                    for (let i = startIndex; i <= endIndex; i++) {
+                        // The closer to the center, the higher chance of scrambling
+                        const distanceFromCenter = Math.abs(i - centerIndex);
+                        const scrambleChance = 1 - (distanceFromCenter / (SCRAMBLE_RANGE + 1));
+                        
+                        if (Math.random() < scrambleChance) {
+                            charElements[i].innerHTML = getRandomChar();
+                        }
+                    }
+                }
+                
+                if (isHovering && isScrambling) {
+                    animationFrameId = requestAnimationFrame(tick);
+                } else {
+                    // Ensure final text is correct
+                    charElements.forEach((charEl, i) => {
+                        charEl.innerHTML = originalChars[i];
+                    });
+                    animationFrameId = null;
+                }
+            }
+            
+            animationFrameId = requestAnimationFrame(tick);
+        }
+        
+        // Track mouse movement over the element
+        element.addEventListener('mousemove', (e) => {
+            currentMouseX = e.clientX;
+            
+            // If we're already hovering but not animating, start animation
+            if (isHovering && !animationFrameId) {
+                runScramble();
+            }
+        });
+        
+        // Mouse enter event
+        element.addEventListener('mouseenter', (e) => {
+            isHovering = true;
+            currentMouseX = e.clientX;
+            
+            let jitterCount = 0;
+            
+            function jitter() {
+                if (!isHovering) return;
+                
+                // Get current position for each jitter frame
+                const centerIndex = getCharIndexAtPosition(currentMouseX);
+                const startIndex = Math.max(0, centerIndex - SCRAMBLE_RANGE);
+                const endIndex = Math.min(originalChars.length - 1, centerIndex + SCRAMBLE_RANGE);
+                
+                // Reset all characters to original first
+                charElements.forEach((charEl, i) => {
+                    charEl.innerHTML = originalChars[i];
+                });
+                
+                // Scramble only characters within range
+                for (let i = startIndex; i <= endIndex; i++) {
+                    charElements[i].innerHTML = getRandomChar();
+                }
+                
+                jitterCount++;
+                
+                if (jitterCount < 5) {
+                    timeoutId = setTimeout(jitter, STEP_MS);
+                } else {
+                    runScramble();
+                }
+            }
+            
+            jitter();
+        });
+        
+        // Mouse leave event
+        element.addEventListener('mouseleave', () => {
+            isHovering = false;
+            
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
+            
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+                timeoutId = null;
+            }
+            
+            // Reset to original text
+            charElements.forEach((charEl, i) => {
+                charEl.innerHTML = originalChars[i];
+            });
+        });
+    });
+});
+
 // Cursor functionality
 document.addEventListener('DOMContentLoaded', function() {
     const cursor = document.querySelector('.cursor');
