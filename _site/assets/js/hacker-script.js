@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const DEFAULT_CHARS = "!<>-_\\/[]{}—=+*^?";
     const STEP_MS = 30;
     const SCRAMBLE_RANGE = 3; // Number of characters to scramble on each side of the cursor
-    const SCRAMBLE_DURATION_MS = 1500; // Duration in ms before scramble effect stops
+    const SCRAMBLE_DURATION_MS = 350; // Duration in ms before scramble effect stops
     
     // Find all scramble-text elements
     const scrambleElements = document.querySelectorAll('.scramble-text');

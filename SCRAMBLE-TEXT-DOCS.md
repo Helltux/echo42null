@@ -27,7 +27,7 @@ When a user hovers over text wrapped in the `scramble_text` tag:
 1. Only characters near the cursor position (±3 characters) get scrambled with random symbols
 2. Characters closest to the cursor have a higher chance of being scrambled
 3. As the user moves the cursor over the text, the scramble effect follows the cursor
-4. The scramble effect automatically stops after a short duration (1.5 seconds by default)
+4. The scramble effect automatically stops after a short duration (0.85 seconds by default)
 5. When the user moves the cursor away, the text immediately returns to its original state
 
 ## Technical Details
@@ -51,7 +51,7 @@ The JavaScript behavior can be customized in `assets/js/hacker-script.js` by mod
 - `DEFAULT_CHARS` - The set of random characters used for scrambling
 - `STEP_MS` - The interval between jitter steps
 - `SCRAMBLE_RANGE` - The number of characters to scramble on each side of the cursor (default: 3)
-- `SCRAMBLE_DURATION_MS` - The duration in milliseconds before the scramble effect stops (default: 1500)
+- `SCRAMBLE_DURATION_MS` - The duration in milliseconds before the scramble effect stops (default: 850)
 
 ## Compatibility
 
